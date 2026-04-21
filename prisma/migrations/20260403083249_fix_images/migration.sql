@@ -9,8 +9,8 @@ CREATE TABLE "User" (
     "address" TEXT,
     "city" TEXT,
     "country" TEXT DEFAULT 'India',
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" DATETIME NOT NULL
+    "createdAt" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP NOT NULL
 );
 
 -- CreateTable
@@ -27,8 +27,8 @@ CREATE TABLE "Product" (
     "isOrganic" BOOLEAN NOT NULL DEFAULT false,
     "images" TEXT NOT NULL DEFAULT '[]',
     "isAvailable" BOOLEAN NOT NULL DEFAULT true,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" DATETIME NOT NULL
+    "createdAt" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP NOT NULL
 );
 
 -- CreateTable
@@ -41,8 +41,8 @@ CREATE TABLE "Order" (
     "status" TEXT NOT NULL DEFAULT 'PENDING',
     "shippingAddress" TEXT NOT NULL,
     "trackingNumber" TEXT,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" DATETIME NOT NULL,
+    "createdAt" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP NOT NULL,
     CONSTRAINT "Order_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
