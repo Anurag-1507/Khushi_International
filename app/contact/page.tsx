@@ -1,4 +1,15 @@
+"use client";
+
+import { useState } from "react";
+
 export default function ContactPage() {
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
   return (
     <div className="bg-gray-50 min-h-screen">
       <div className="max-w-5xl mx-auto px-6 py-20">
@@ -54,38 +65,48 @@ export default function ContactPage() {
               Send an Enquiry
             </h2>
 
-            <form className="space-y-4">
-              <input
-                type="text"
-                placeholder="Your Name"
-                className="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-600"
-              />
+            {submitted ? (
+              <div className="bg-green-100 border border-green-300 text-green-800 p-4 rounded-lg">
+                ✅ Thank you for contacting us.<br />
+                We will get back to you shortly.
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  required
+                  className="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-600"
+                />
 
-              <input
-                type="email"
-                placeholder="Your Email"
-                className="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-600"
-              />
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  required
+                  className="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-600"
+                />
 
-              <input
-                type="text"
-                placeholder="Phone Number"
-                className="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-600"
-              />
+                <input
+                  type="text"
+                  placeholder="Phone Number"
+                  className="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-600"
+                />
 
-              <textarea
-                placeholder="Your Message"
-                rows={4}
-                className="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-600"
-              ></textarea>
+                <textarea
+                  placeholder="Your Message"
+                  rows={4}
+                  required
+                  className="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-600"
+                ></textarea>
 
-              <button
-                type="button"
-                className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-semibold transition"
-              >
-                Submit Enquiry
-              </button>
-            </form>
+                <button
+                  type="submit"
+                  className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-semibold transition"
+                >
+                  Submit Enquiry
+                </button>
+              </form>
+            )}
           </div>
 
         </div>
