@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Providers from "./providers";
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer"; // ✅ ADD THIS
+import Footer from "./components/Footer";
 
 export const metadata: Metadata = {
   title: "Khushi International - Fresh Fruits & Vegetables",
@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
   },
+  viewport: "width=device-width, initial-scale=1",
 };
 
 export default function RootLayout({
@@ -25,7 +26,7 @@ export default function RootLayout({
         <Providers>
           <Navbar />
           {children}
-          <Footer /> {/* ✅ ADD THIS */}
+          <Footer />
         </Providers>
       </body>
     </html>
